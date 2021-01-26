@@ -3,7 +3,7 @@ class TableauZoo extends Tableau{
     preload() {
         super.preload();
         this.load.image('star', 'assets/star.png');
-        this.load.image('monster-fly', 'assets/monster-fly.png');
+        this.load.image('monster1', 'assets/monster1.png');
         this.load.image('monster-violet', 'assets/monster-violet.png');
 
     }
@@ -38,11 +38,8 @@ class TableauZoo extends Tableau{
         };
         */
 
-        for (let i = 0; i<5; i++){
-            let x = 300 + Math.random()* 500;
-            let y = 150 + Math.random()* 220;
-            new Monster(this, x, y);
-        }
+
+        new Monster1(this, 0.1*width + 250, 0.9*height);
 
 
     }
