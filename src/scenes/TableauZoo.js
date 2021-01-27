@@ -40,6 +40,7 @@ class TableauZoo extends Tableau{
 
 
         new Monster1(this, 0.1*width + 250, 0.9*height);
+        new Monster2(this, 300, 300);
 
 
     }

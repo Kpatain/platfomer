@@ -1,4 +1,4 @@
-class Monster1 extends ObjetEnnemi{
+class Monster2 extends ObjetEnnemi{
     /**
      *
      * @param {Tableau} scene
@@ -40,6 +40,7 @@ class Monster1 extends ObjetEnnemi{
 
         //on fait apparaitre notre objet avec un petit delay, puis on lance l'animation
         //ceci a pour effet de décaler les animations pour ce même objet
+        
         scene.tweens.add({
                 targets:this,
                 duration:200,
@@ -53,18 +54,21 @@ class Monster1 extends ObjetEnnemi{
                     me.start();
                 }
             })
+        
+    
+
 
     }
 
-    start()
-    {
+
+    start(){
         this.scene.tweens.add({
             targets: this,
             x: {
                 from: this.minX,
                 to:this.maxX,
                 duration: 10*1000,
-                ease: 'Linear',
+                ease: 'Quadratic.Out',
                 yoyo: -1,
                 repeat:-1,
                 flipX:true,
@@ -73,11 +77,14 @@ class Monster1 extends ObjetEnnemi{
                 from: this.minY,
                 to:this.maxY,
                 duration: 5000,
-                ease: 'Back.Out',
+                ease: 'Quadratic.Out',
                 yoyo: -1,
                 repeat:-1
             }
         });
     }
+
+
+    
 
 }
