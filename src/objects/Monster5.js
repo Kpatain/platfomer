@@ -1,4 +1,4 @@
-class Monster2 extends ObjetEnnemi{
+class Monster5 extends ObjetEnnemi{
     /**
      *
      * @param {Tableau} scene
@@ -7,7 +7,7 @@ class Monster2 extends ObjetEnnemi{
      */
     constructor(scene, x, y) {
 
-        super(scene, x, y, "monster2");
+        super(scene, x, y, "monster5");
         //pas de gravité
         this.body.allowGravity=false;
 
@@ -68,7 +68,7 @@ class Monster2 extends ObjetEnnemi{
                 from: this.minX,
                 to:this.maxX,
                 duration: 10*1000,
-                ease: 'Quadratic.Out',
+                ease: 'Expo.easeInOut',
                 yoyo: -1,
                 repeat:-1,
                 flipX:true,
@@ -77,7 +77,7 @@ class Monster2 extends ObjetEnnemi{
                 from: this.minY,
                 to:this.maxY,
                 duration: 5000,
-                ease: 'Quadratic.Out',
+                ease: 'Expo.easeInOut',
                 yoyo: -1,
                 repeat:-1
             }

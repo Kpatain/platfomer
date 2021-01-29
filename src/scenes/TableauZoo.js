@@ -4,6 +4,10 @@ class TableauZoo extends Tableau{
         super.preload();
         this.load.image('star', 'assets/star.png');
         this.load.image('monster1', 'assets/monster1.png');
+        this.load.image('monster2', 'assets/monster2.png');
+        this.load.image('monster3', 'assets/monster3.png');
+        this.load.image('monster4', 'assets/monster4.png');
+        this.load.image('monster5', 'assets/monster5.png');
         this.load.image('monster-violet', 'assets/monster-violet.png');
 
     }
@@ -40,7 +44,10 @@ class TableauZoo extends Tableau{
 
 
         new Monster1(this, 0.1*width + 250, 0.9*height);
-        new Monster2(this, 300, 300);
+        new Monster2(this, 300, 300);                                               // J'ai pas le temps de m'amuser à faire des jolies anim'
+        new Monster3(this, 200, 300);                                               // Mais le coeur y est
+        new Monster4(this, 300, 250);
+        new Monster5(this, 250, 300);
 
 
     }
