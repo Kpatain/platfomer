@@ -1,10 +1,11 @@
-class Tableau08 extends Tableau{
+class TableauPara extends Tableau{
 
     preload() {
         super.preload();
         this.load.image('star', 'assets/star.png');
         this.load.image('ground', 'assets/platform.png');
         this.load.image('sky-2', 'assets/sky-2.jpg');
+        this.load.image('lave', 'assets/lave.png');
     }
     create() {
         super.create();
@@ -27,6 +28,8 @@ class Tableau08 extends Tableau{
             let plate=this.platforms.create(posX ,etoileY+50,"ground");
             plate.setDisplaySize(60,10);
             plate.refreshBody();
+
+            
         }
         this.physics.add.overlap(this.player, this.stars, this.ramasserEtoile, null, this);
         this.physics.add.collider(this.player,this.platforms);
@@ -60,6 +63,11 @@ class Tableau08 extends Tableau{
         this.platforms.setDepth(10);
         this.stars.setDepth(10);
         this.player.setDepth(10);
+
+        //la lave
+        let lave=this.lave.create(0 ,0,"lave");
+
+
     }
 
     update(){
