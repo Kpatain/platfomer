@@ -19,7 +19,7 @@ class Tableau extends Phaser.Scene{
         this.load.image('spike', 'assets/spike.png');
         this.load.spritesheet('player',
             'assets/player.png',
-            { frameWidth: 32, frameHeight: 48  }
+            { frameWidth: 64, frameHeight: 64  }
         );
     }
     create(){
