@@ -57,9 +57,9 @@ class Tableau08 extends Tableau{
 
 
         //fait passer les éléments devant le ciel
-        this.platforms.setDepth(10);
-        this.stars.setDepth(10);
-        this.player.setDepth(10);
+        this.platforms.setDepth(10)
+        this.stars.setDepth(10)
+        this.player.setDepth(10)
     }
 
     update(){
