@@ -26,10 +26,10 @@ class Tableau06 extends Tableau{
         //notre monstre
         this.monstre=this.physics.add.sprite(300,this.sys.canvas.height-70,"monster-violet");
         this.monstre.setOrigin(0,0);
-        this.monstre.setDisplaySize(128,128);
+        this.monstre.setDisplaySize(64,64);
         this.monstre.setCollideWorldBounds(true);
         this.monstre.setBounce(1);
-        this.monstre.setVelocityX(100);
+        this.monstre.setVelocityX(50);
         this.physics.add.overlap(this.player, this.monstre, this.hitSpike, null, this);
 
 
