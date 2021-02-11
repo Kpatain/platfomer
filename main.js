@@ -16,11 +16,7 @@ let config = {
     scene: [
         new Ui(),
 
-<<<<<<< HEAD
         new Tableau06("Un monstre!"),
-=======
-        new TableauZoo("Le Zoo"),
->>>>>>> parent of 42c6ba6 (Lave ?)
         new Tableau00("Des étoiles"),
         new Tableau01("Des plateformes"),
         new Tableau02("Plein d'étoiles"),
