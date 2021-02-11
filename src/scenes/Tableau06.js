@@ -13,7 +13,6 @@ class Tableau06 extends Tableau{
         //quelques étoiles
         this.stars.create(600 ,0,"star");
                          
-        444444444444444444444444444486365965696
         this.stars.children.iterate(function (child) {
             child.setBounce(1);
             child.setGravity(1);
