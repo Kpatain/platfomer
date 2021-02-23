@@ -9,6 +9,8 @@ class TableauPara extends Tableau{
         this.load.image('2', 'assets/2.png');
         this.load.image('3', 'assets/3.png');
         this.load.image('4', 'assets/4.png');
+        this.load.image('monster1', 'assets/monster_algue.png');
+        this.load.image('monster7', 'assets/monster7.png');
     }
     create() {
         super.create();
@@ -22,19 +24,7 @@ class TableauPara extends Tableau{
         this.cameras.main.startFollow(this.player, false, 0.05, 0.05);
 
         //quelques étoiles et plateformes qui vont avec
-        this.stars=this.physics.add.group();
-        this.platforms=this.physics.add.staticGroup();
-        for(let posX=20;posX<largeurDuTableau;posX+=100){
-            let etoileY=350+Math.sin(posX)*100;
-            let star=this.stars.create(posX ,etoileY,"star");
-            star.body.allowGravity=false;
-            let plate=this.platforms.create(posX ,etoileY+50,"ground");
-            plate.setVisible(0);
-            plate.setDisplaySize(60,10);
-            plate.refreshBody();
-        }
-        this.physics.add.overlap(this.player, this.stars, this.ramasserEtoile, null, this);
-        this.physics.add.collider(this.player,this.platforms);
+        
 
 
         //on change de ciel, on fait une tileSprite ce qui permet d'avoir une image qui se répète
@@ -87,12 +77,30 @@ class TableauPara extends Tableau{
         this.sky3.setScrollFactor(0);
         this.sky3.setOrigin(0,0);
         this.sky3.setDepth(12);
+        
+        this.stars=this.physics.add.group();
+        this.platforms=this.physics.add.staticGroup();
+        for(let posX=20;posX<largeurDuTableau;posX+=200){
+            let etoileY=Math.random()*150 + 300;
+            let star=this.stars.create(posX ,etoileY,"star");
+            star.body.allowGravity=false;
+            let plate=this.platforms.create(posX ,etoileY+50,"ground");
+            plate.setVisible(1);
+            plate.setDisplaySize(50,20);
+            plate.refreshBody();
 
+            new Monster1(this, posX + 100, 800);
+        }
+        this.physics.add.overlap(this.player, this.stars, this.ramasserEtoile, null, this);
+        this.physics.add.collider(this.player,this.platforms);
+
+        new Monster7(this, 400, 350);
+        new Monster7(this, 400, 350);
 
         //fait passer les éléments devant le ciel
-        this.platforms.setDepth(10)
-        this.stars.setDepth(10)
-        this.player.setDepth(10)
+        this.platforms.setDepth(10);
+        this.stars.setDepth(10);
+        this.player.setDepth(10);
     }
 
     update(){
