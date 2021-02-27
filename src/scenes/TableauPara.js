@@ -11,6 +11,7 @@ class TableauPara extends Tableau{
         this.load.image('4', 'assets/4.png');
         this.load.image('monster1', 'assets/monster_algue.png');
         this.load.image('monster7', 'assets/monster7.png');
+        this.load.image('monster2', 'assets/plastique.png');
     }
     create() {
         super.create();
@@ -89,18 +90,21 @@ class TableauPara extends Tableau{
             plate.setDisplaySize(50,20);
             plate.refreshBody();
 
-            new Monster1(this, posX + 100, 800);
+            new Algues(this, posX + 100, 800);
         }
         this.physics.add.overlap(this.player, this.stars, this.ramasserEtoile, null, this);
         this.physics.add.collider(this.player,this.platforms);
 
-        new Monster7(this, 400, 350);
-        new Monster7(this, 400, 350);
+        new Filet(this, 400, 350);
+        new Filet(this, 700, 350);
+
+        new Plastique(this, 600, 500);
 
         //fait passer les éléments devant le ciel
         this.platforms.setDepth(10);
         this.stars.setDepth(10);
         this.player.setDepth(10);
+
     }
 
     update(){

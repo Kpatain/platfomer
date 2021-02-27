@@ -1,4 +1,4 @@
-class Monster1 extends ObjetEnnemi{
+class Algues extends ObjetEnnemiSpike{
     /**
      *
      * @param {Tableau} scene

@@ -1,4 +1,4 @@
-class ObjetEnnemi extends ObjetPhysique{
+class ObjetEnnemiSpike extends ObjetPhysique{
     /**
      * Quand Player touche cet objet, il a perdu
      * @param {Tableau} scene
@@ -11,7 +11,7 @@ class ObjetEnnemi extends ObjetPhysique{
         scene.physics.add.overlap(
             scene.player,
             this,
-            scene.hitMonster,
+            scene.hitSpike,
             null,
             scene
         );
