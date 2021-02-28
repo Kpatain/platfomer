@@ -11,7 +11,7 @@ class TableauPara extends Tableau{
         this.load.image('4', 'assets/4.png');
         this.load.image('monster1', 'assets/monster_algue.png');
         this.load.image('monster7', 'assets/monster7.png');
-        this.load.image('monster2', 'assets/Plastique.png');
+        this.load.image('monster2', 'assets/plastique.png');
     }
     create() {
         super.create();
