@@ -78,6 +78,8 @@ class TableauPara extends Tableau{
         this.sky3.setScrollFactor(0);
         this.sky3.setOrigin(0,0);
         this.sky3.setDepth(12);
+
+        
         
         this.stars=this.physics.add.group();
         this.platforms=this.physics.add.staticGroup();
@@ -85,13 +87,22 @@ class TableauPara extends Tableau{
             let etoileY=Math.random()*150 + 300;
             let star=this.stars.create(posX ,etoileY,"star");
             star.body.allowGravity=false;
+
+            /*
             let plate=this.platforms.create(posX ,etoileY+50,"ground");
             plate.setVisible(1);
             plate.setDisplaySize(50,20);
             plate.refreshBody();
 
             new Algues(this, posX + 100, 800);
+            **/
         }
+
+        let sol=this.platforms.create(0,558,"ground");
+        sol.setVisible(0);
+        sol.setDisplaySize(1968,100);
+        sol.refreshBody();
+
         this.physics.add.overlap(this.player, this.stars, this.ramasserEtoile, null, this);
         this.physics.add.collider(this.player,this.platforms);
 
