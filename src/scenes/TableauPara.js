@@ -9,9 +9,10 @@ class TableauPara extends Tableau{
         this.load.image('2', 'assets/2.png');
         this.load.image('3', 'assets/3.png');
         this.load.image('4', 'assets/4.png');
-        this.load.image('monster1', 'assets/monster_algue.png');
+        this.load.image('monster1', 'assets/piques.png');
         this.load.image('monster7', 'assets/monster7.png');
         this.load.image('monster2', 'assets/plastique.png');
+        this.load.image('pf', 'assets/plateforme.png');
     }
     create() {
         super.create();
@@ -52,9 +53,10 @@ class TableauPara extends Tableau{
         );
         this.sky2.setScrollFactor(0);
         this.sky2.setOrigin(0,0);
-        this.sky2.setDepth(5);
+        this.sky2.setDepth(0);
         //this.sky.tileScaleX=this.sky.tileScaleY=0.8;
-
+        
+        
         //on ajoute une troisieme couche de ciel
         this.sky4=this.add.tileSprite(
             0,
@@ -65,12 +67,13 @@ class TableauPara extends Tableau{
         );
         this.sky4.setScrollFactor(0);
         this.sky4.setOrigin(0,0);
-        this.sky4.setDepth(0);
+        this.sky4.setDepth(20);
+        
 
         //on ajoute une troisieme couche de ciel
         this.sky3=this.add.tileSprite(
             0,
-            0,
+            100,
             this.sys.canvas.width,
             this.sys.canvas.height,
             '1'
@@ -84,7 +87,7 @@ class TableauPara extends Tableau{
         this.stars=this.physics.add.group();
         this.platforms=this.physics.add.staticGroup();
         for(let posX=20;posX<largeurDuTableau;posX+=200){
-            let etoileY=Math.random()*150 + 300;
+            let etoileY=Math.random()*100 + 300;
             let star=this.stars.create(posX ,etoileY,"star");
             star.body.allowGravity=false;
 
@@ -93,14 +96,18 @@ class TableauPara extends Tableau{
             plate.setVisible(1);
             plate.setDisplaySize(50,20);
             plate.refreshBody();
+            */
 
-            new Algues(this, posX + 100, 800);
-            **/
+            new Algues(this, posX + 100, 560);
+            
+
+           this.platforms.create(posX, etoileY+50, 'pf').setDisplaySize(80,20).refreshBody().setDepth(12);
+
         }
 
         let sol=this.platforms.create(0,558,"ground");
         sol.setVisible(0);
-        sol.setDisplaySize(1968,100);
+        sol.setDisplaySize(20000,93);
         sol.refreshBody();
 
         this.physics.add.overlap(this.player, this.stars, this.ramasserEtoile, null, this);
@@ -130,8 +137,9 @@ class TableauPara extends Tableau{
         this.sky3.tilePositionX=this.cameras.main.scrollX*1.2;
         this.sky3.tilePositionY=this.cameras.main.scrollY*0.4;
 
-        this.sky4.tilePositionX=this.cameras.main.scrollX*0.3;
-        this.sky4.tilePositionY=this.cameras.main.scrollY*0.1;
+        this.sky4.tilePositionX=this.cameras.main.scrollX*2;
+        this.sky4.tilePositionY=this.cameras.main.scrollY*0.6;
+        
     }
 
 

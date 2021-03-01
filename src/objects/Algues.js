@@ -12,11 +12,13 @@ class Algues extends ObjetEnnemiSpike{
         this.body.allowGravity=false;
 
         //gestion de la taille
-        this.setDisplaySize(50,400);
+        this.setDisplaySize(40,100);
+
 
         //on réduit un peu la zone de hit
         this.setBodySize(this.body.width-400,this.body.height-400);
         this.setOffset(150, 250);
+        this.setSize(40, 100);
 
         //définir les propriété que l'on va utiliser dans notre animation
 
@@ -27,7 +29,7 @@ class Algues extends ObjetEnnemiSpike{
 
         // Y
         this.originalY=y;
-        this.minY=y-400;
+        this.minY=y-100;
         this.maxY=y;
 
         // on applique les propriété du début de l'animation
