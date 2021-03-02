@@ -12,19 +12,19 @@ class Filet extends ObjetEnnemiSpike{
         this.body.allowGravity=false;
 
         //gestion de la taille
-        this.setDisplaySize(150,290);
+        this.setDisplaySize(64,256);
 
         //on réduit un peu la zone de hit
         this.setBodySize(this.body.width-400,this.body.height-400);
         this.setOffset(150, 250);
-        this.setSize(150, 250);
+        this.setSize(64, 256);
 
         //définir les propriété que l'on va utiliser dans notre animation
 
         // X
         this.originalX=x;
         this.minX=x-200;
-        this.maxX=x+800;
+        this.maxX=x+500;
 
         // Y
         this.originalY=y;
@@ -63,8 +63,8 @@ class Filet extends ObjetEnnemiSpike{
             x: {
                 from: this.minX,
                 to:this.maxX,
-                duration: 5000,
-                ease: 'Expo.easeOut',
+                duration: 7000,
+                ease: 'Back.easeInOut',
                 yoyo: -1,
                 repeat:-1,
                 flipX:true,

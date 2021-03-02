@@ -2,7 +2,7 @@ class TableauPara extends Tableau{
 
     preload() {
         super.preload();
-        this.load.image('star', 'assets/star.png');
+        this.load.image('star', 'assets/jade.png');
         this.load.image('ground', 'assets/platform.png');
         this.load.image('sky-2', 'assets/sky-2.jpg');
         this.load.image('1', 'assets/1.png');
@@ -10,8 +10,8 @@ class TableauPara extends Tableau{
         this.load.image('3', 'assets/3.png');
         this.load.image('4', 'assets/4.png');
         this.load.image('monster1', 'assets/piques.png');
-        this.load.image('monster7', 'assets/monster7.png');
-        this.load.image('monster2', 'assets/plastique.png');
+        this.load.image('monster7', 'assets/boule.png');
+        this.load.image('monster2', 'assets/robot.png');
         this.load.image('pf', 'assets/plateforme.png');
     }
     create() {
@@ -86,12 +86,13 @@ class TableauPara extends Tableau{
         
         this.stars=this.physics.add.group();
         this.platforms=this.physics.add.staticGroup();
-        for(let posX=20;posX<largeurDuTableau;posX+=200){
+        this.platforms.create(20, 400, 'pf').setDisplaySize(80,20).refreshBody().setDepth(12);
+        for(let posX=220;posX<largeurDuTableau;posX+=200){
             let etoileY=Math.random()*100 + 300;
             let star=this.stars.create(posX ,etoileY,"star");
             star.body.allowGravity=false;
 
-            /*
+            /* ANCIEN 
             let plate=this.platforms.create(posX ,etoileY+50,"ground");
             plate.setVisible(1);
             plate.setDisplaySize(50,20);
@@ -113,10 +114,11 @@ class TableauPara extends Tableau{
         this.physics.add.overlap(this.player, this.stars, this.ramasserEtoile, null, this);
         this.physics.add.collider(this.player,this.platforms);
 
-        new Filet(this, 400, 350);
-        new Filet(this, 700, 350);
+        new Filet(this, 600, 340);
+        new Filet(this, 1600, 300);
 
-        new Plastique(this, 600, 500);
+        new Plastique(this, 600, 430);
+        new Plastique(this, 1200, 430);
 
         //fait passer les éléments devant le ciel
         this.platforms.setDepth(10);

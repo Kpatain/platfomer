@@ -12,12 +12,13 @@ class Plastique extends ObjetEnnemi{
         this.body.allowGravity=false;
 
         //gestion de la taille
-        this.setDisplaySize(64,64);
+        this.setDisplaySize(128,128);
 
         //on réduit un peu la zone de hit
         this.setBodySize(this.body.width-400,this.body.height-400);
         this.setOffset(150, 250);
-        this.setSize(100, 100);
+        this.setSize(128, 128);
+
 
         //définir les propriété que l'on va utiliser dans notre animation
 
@@ -28,7 +29,7 @@ class Plastique extends ObjetEnnemi{
 
         // Y
         this.originalY=y;
-        this.minY=y-200;
+        this.minY=y-100;
         this.maxY=y;
 
         // on applique les propriété du début de l'animation
