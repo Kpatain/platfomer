@@ -114,8 +114,8 @@ class TableauPara extends Tableau{
         this.physics.add.overlap(this.player, this.stars, this.ramasserEtoile, null, this);
         this.physics.add.collider(this.player,this.platforms);
 
-        new Filet(this, 600, 340);
-        new Filet(this, 1600, 300);
+        new Filet(this, 800, 340);
+        new Filet(this, 1800, 300);
 
         new Plastique(this, 600, 430);
         new Plastique(this, 1200, 430);

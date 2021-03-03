@@ -17,7 +17,7 @@ class Tableau extends Phaser.Scene{
     preload(){
         this.load.image('sky', 'assets/sky.png');
         this.load.image('spike', 'assets/spike.png');
-        this.load.image('blood', 'assets/blood.png');
+        this.load.image('blood', 'assets/elec.png');
         this.load.spritesheet('player',
             'assets/player.png',
             { frameWidth: 64, frameHeight: 16  }
@@ -59,6 +59,7 @@ class Tableau extends Phaser.Scene{
     saigne(object,onComplete){
         let me=this;
         me.blood.visible=true;
+        me.blood.setDepth(12);
         me.blood.rotation = Phaser.Math.Between(0,6);
         me.blood.x=object.x;
         me.blood.y=object.y;
