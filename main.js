@@ -10,13 +10,13 @@ let config = {
         default: 'arcade',
         arcade: {
             gravity: { y: 100*3 },
-            debug: 0,
+            debug: 1,
         }
     },
     scene: [
         new Ui(),
 
-        new TableauPara("LA CHATEAAAAAAU"),
+        new TableauPara("Robotic Castle"),
         new TableauZoo("Le Zoo"),
         new Tableau00("Des étoiles"),
         new Tableau01("Des plateformes"),

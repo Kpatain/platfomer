@@ -20,7 +20,7 @@ class Tableau extends Phaser.Scene{
         this.load.image('blood', 'assets/elec.png');
         this.load.spritesheet('player',
             'assets/player.png',
-            { frameWidth: 64, frameHeight: 16  }
+            { frameWidth: 32, frameHeight: 32  }
         );
     }
     create(){
@@ -137,13 +137,14 @@ class Tableau extends Phaser.Scene{
 
             ){
                 ui.gagne();
+                player.directionY=500;
                 monster.isDead=true; //ok le monstre est mort
                 monster.visible=false;
                 this.saigne(monster,function(){
                     //à la fin de la petite anim...ben il se passe rien :)
                 })
                 //notre joueur rebondit sur le monstre
-                player.directionY=500;
+                
             }else{
                 //le joueur est mort
                 if(!me.player.isDead){
