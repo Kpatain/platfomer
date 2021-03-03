@@ -24,6 +24,7 @@ class Tableau extends Phaser.Scene{
         );
     }
     create(){
+
         Tableau.current=this;
         this.sys.scene.scale.lockOrientation("landscape")
         console.log("On est sur "+this.constructor.name+" / "+this.scene.key);
@@ -88,6 +89,7 @@ class Tableau extends Phaser.Scene{
      */
     ramasserEtoile (player, star)
     {
+
         star.disableBody(true, true);
         ui.gagne();
 
@@ -97,6 +99,7 @@ class Tableau extends Phaser.Scene{
             if(child.texture && child.texture.key==="star"){
                 if(child.active){
                     totalActive++;
+                    player.setVelocityY(-250);
                 }
             }
         }
@@ -138,12 +141,14 @@ class Tableau extends Phaser.Scene{
             ){
                 ui.gagne();
                 player.directionY=500;
+                player.setVelocityY(-250);
+                console.log("test");
                 monster.isDead=true; //ok le monstre est mort
                 monster.visible=false;
                 this.saigne(monster,function(){
                     //à la fin de la petite anim...ben il se passe rien :)
+
                 })
-                //notre joueur rebondit sur le monstre
                 
             }else{
                 //le joueur est mort
