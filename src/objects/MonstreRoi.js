@@ -8,20 +8,16 @@ class MonstreRoi extends ObjetEnnemi{
     constructor(scene, x, y) {
 
         super(scene, x, y, "robot");
-        //pas de gravité
         this.body.allowGravity=false;
 
-        //gestion de la taille
         this.setDisplaySize(128,128);
 
-        //on réduit un peu la zone de hit
+        //HIT
         this.setBodySize(this.body.width-400,this.body.height-400);
         this.setOffset(150, 250);
         this.setSize(100, 128);
-        this.setDepth(3);
+        this.setDepth(3);                       //Profondeur
 
-
-        //définir les propriété que l'on va utiliser dans notre animation
 
         // X
         this.originalX=x;
@@ -33,7 +29,7 @@ class MonstreRoi extends ObjetEnnemi{
         this.minY=y-100;
         this.maxY=y;
 
-        // on applique les propriété du début de l'animation
+        // coord anim
         this.x=this.minX;
         this.y=this.minY;
         this.alpha=0;
@@ -41,9 +37,7 @@ class MonstreRoi extends ObjetEnnemi{
 
     
 
-        //on fait apparaitre notre objet avec un petit delay, puis on lance l'animation
-        //ceci a pour effet de décaler les animations pour ce même objet
-        
+        //Animation
         scene.tweens.add({
                 targets:this,
                 duration:200,

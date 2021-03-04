@@ -8,19 +8,17 @@ class Boule extends ObjetEnnemiSpike{
     constructor(scene, x, y) {
 
         super(scene, x, y, "boule");
-        //pas de gravité
         this.body.allowGravity=false;
 
-        //gestion de la taille
         this.setDisplaySize(64,256);
 
-        //on réduit un peu la zone de hit
+        //les Hit
         this.setBodySize(this.body.width-400,this.body.height-400);
         this.setOffset(150, 250);
         this.setSize(64, 256);
         this.setDepth(3);
 
-        //définir les propriété que l'on va utiliser dans notre animation
+        //coordonnees
 
         // X
         this.originalX=x;
@@ -32,7 +30,7 @@ class Boule extends ObjetEnnemiSpike{
         this.minY=y-200;
         this.maxY=y;
 
-        // on applique les propriété du début de l'animation
+        // coord anim
         this.x=this.minX;
         this.y=this.minY;
         this.alpha=0;
@@ -40,8 +38,7 @@ class Boule extends ObjetEnnemiSpike{
 
     
 
-        //on fait apparaitre notre objet avec un petit delay, puis on lance l'animation
-        //ceci a pour effet de décaler les animations pour ce même objet
+        //anim
         
         scene.tweens.add({
                 targets:this,
