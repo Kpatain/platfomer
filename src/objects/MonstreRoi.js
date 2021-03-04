@@ -1,4 +1,4 @@
-class Algues extends ObjetEnnemiSpike{
+class MonstreRoi extends ObjetEnnemi{
     /**
      *
      * @param {Tableau} scene
@@ -7,25 +7,26 @@ class Algues extends ObjetEnnemiSpike{
      */
     constructor(scene, x, y) {
 
-        super(scene, x, y, "monster1");
+        super(scene, x, y, "robot");
         //pas de gravité
         this.body.allowGravity=false;
 
         //gestion de la taille
-        this.setDisplaySize(40,100);
-
+        this.setDisplaySize(128,128);
 
         //on réduit un peu la zone de hit
         this.setBodySize(this.body.width-400,this.body.height-400);
         this.setOffset(150, 250);
-        this.setSize(40, 100);
+        this.setSize(100, 128);
+        this.setDepth(3);
+
 
         //définir les propriété que l'on va utiliser dans notre animation
 
         // X
         this.originalX=x;
         this.minX=x-200;
-        this.maxX=x+300;
+        this.maxX=x+600;
 
         // Y
         this.originalY=y;
@@ -42,10 +43,11 @@ class Algues extends ObjetEnnemiSpike{
 
         //on fait apparaitre notre objet avec un petit delay, puis on lance l'animation
         //ceci a pour effet de décaler les animations pour ce même objet
+        
         scene.tweens.add({
                 targets:this,
                 duration:200,
-                delay:Math.random()*3000,
+                delay:Math.random()*1000,
                 alpha:{
                     startDelay:Math.random()*5000,
                     from:0,
@@ -55,22 +57,37 @@ class Algues extends ObjetEnnemiSpike{
                     me.start();
                 }
             })
+        
+    
+
 
     }
 
-    start()
-    {
+
+    start(){
         this.scene.tweens.add({
             targets: this,
+            x: {
+                from: this.minX,
+                to:this.maxX,
+                duration: 10*1000,
+                ease: 'Quadratic.Out',
+                yoyo: -1,
+                repeat:-1,
+                flipX:true,
+            },
             y: {
                 from: this.minY,
                 to:this.maxY,
-                duration: 2000,
-                ease: 'Linear',
+                duration: 5000,
+                ease: 'Quadratic.Out',
                 yoyo: -1,
                 repeat:-1
             }
         });
     }
+
+
+    
 
 }

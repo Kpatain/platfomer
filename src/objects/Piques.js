@@ -1,4 +1,4 @@
-class Plastique extends ObjetEnnemi{
+class Piques extends ObjetEnnemiSpike{
     /**
      *
      * @param {Tableau} scene
@@ -7,46 +7,39 @@ class Plastique extends ObjetEnnemi{
      */
     constructor(scene, x, y) {
 
-        super(scene, x, y, "monster2");
-        //pas de gravité
+        super(scene, x, y, "piques");
         this.body.allowGravity=false;
 
-        //gestion de la taille
-        this.setDisplaySize(128,128);
 
-        //on réduit un peu la zone de hit
+        this.setDisplaySize(40,100);
         this.setBodySize(this.body.width-400,this.body.height-400);
         this.setOffset(150, 250);
-        this.setSize(100, 128);
+        this.setSize(40, 100);                                                 //Hitbox
+        this.setDepth(3);                                                 //Profondeur                                                        
 
 
-        //définir les propriété que l'on va utiliser dans notre animation
 
         // X
         this.originalX=x;
         this.minX=x-200;
-        this.maxX=x+600;
+        this.maxX=x+300;
 
         // Y
         this.originalY=y;
         this.minY=y-100;
         this.maxY=y;
 
-        // on applique les propriété du début de l'animation
-        this.x=this.minX;
+
+        this.x=this.minX;                   // coord d'anim
         this.y=this.minY;
         this.alpha=0;
         let me=this;
 
-    
-
-        //on fait apparaitre notre objet avec un petit delay, puis on lance l'animation
-        //ceci a pour effet de décaler les animations pour ce même objet
-        
+        //Animation
         scene.tweens.add({
                 targets:this,
                 duration:200,
-                delay:Math.random()*1000,
+                delay:Math.random()*3000,
                 alpha:{
                     startDelay:Math.random()*5000,
                     from:0,
@@ -56,37 +49,22 @@ class Plastique extends ObjetEnnemi{
                     me.start();
                 }
             })
-        
-    
-
 
     }
 
-
-    start(){
+    start()
+    {
         this.scene.tweens.add({
             targets: this,
-            x: {
-                from: this.minX,
-                to:this.maxX,
-                duration: 10*1000,
-                ease: 'Quadratic.Out',
-                yoyo: -1,
-                repeat:-1,
-                flipX:true,
-            },
             y: {
                 from: this.minY,
                 to:this.maxY,
-                duration: 5000,
-                ease: 'Quadratic.Out',
+                duration: 2000,
+                ease: 'Linear',
                 yoyo: -1,
                 repeat:-1
             }
         });
     }
-
-
-    
 
 }

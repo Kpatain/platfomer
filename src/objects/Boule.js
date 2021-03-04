@@ -1,4 +1,4 @@
-class Filet extends ObjetEnnemiSpike{
+class Boule extends ObjetEnnemiSpike{
     /**
      *
      * @param {Tableau} scene
@@ -7,7 +7,7 @@ class Filet extends ObjetEnnemiSpike{
      */
     constructor(scene, x, y) {
 
-        super(scene, x, y, "monster7");
+        super(scene, x, y, "boule");
         //pas de gravité
         this.body.allowGravity=false;
 
@@ -18,6 +18,7 @@ class Filet extends ObjetEnnemiSpike{
         this.setBodySize(this.body.width-400,this.body.height-400);
         this.setOffset(150, 250);
         this.setSize(64, 256);
+        this.setDepth(3);
 
         //définir les propriété que l'on va utiliser dans notre animation
 

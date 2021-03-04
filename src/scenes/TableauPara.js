@@ -1,4 +1,17 @@
 class TableauPara extends Tableau{
+    /* 
+    PROFONDEUR DE CHAMPS
+    1er plan: 6
+    2e plan: 5
+    
+    Player: 4
+    Monstres : 3
+    plateformes et diams: 2
+
+    3e plan: 1 
+    4e plan: 0
+    **/
+
 
     preload() {
         super.preload();
@@ -9,55 +22,24 @@ class TableauPara extends Tableau{
         this.load.image('2', 'assets/2.png');
         this.load.image('3', 'assets/3.png');
         this.load.image('4', 'assets/4.png');
-        this.load.image('monster1', 'assets/piques.png');
-        this.load.image('monster7', 'assets/boule.png');
-        this.load.image('monster2', 'assets/robot.png');
+        this.load.image('piques', 'assets/piques.png');
+        this.load.image('boule', 'assets/boule.png');
+        this.load.image('robot', 'assets/robot.png');
         this.load.image('pf', 'assets/plateforme.png');
     }
     create() {
         super.create();
 
-        //on définit la taille du tableau
-        let largeurDuTableau=4000;
-        let hauteurDuTableau=600; //la hauteur est identique au cadre du jeu
-        this.cameras.main.setBounds(0, 0, largeurDuTableau, hauteurDuTableau);
-        this.physics.world.setBounds(0, 0, largeurDuTableau,  hauteurDuTableau);
+        //setup TAB
+        let tabL=4000;
+        let tabH=600; //la hauteur est identique au cadre du jeu
+        this.cameras.main.setBounds(0, 0, tabL, tabH);
+        this.physics.world.setBounds(0, 0, tabL,  tabH);
 
         this.cameras.main.startFollow(this.player, false, 0.05, 0.05);
 
-        //quelques étoiles et plateformes qui vont avec
         
-
-
-        //on change de ciel, on fait une tileSprite ce qui permet d'avoir une image qui se répète
-        this.sky=this.add.tileSprite(
-            0,
-            0,
-            this.sys.canvas.width,
-            this.sys.canvas.height,
-            '3'
-        );
-        this.sky.setOrigin(0,0);
-        this.sky.setScrollFactor(0);//fait en sorte que le ciel ne suive pas la caméra
-        this.sky.setDepth(0);
-        
-
-
-        //on ajoute une deuxième couche de ciel
-        this.sky2=this.add.tileSprite(
-            0,
-            0,
-            this.sys.canvas.width,
-            this.sys.canvas.height,
-            '2'
-        );
-        this.sky2.setScrollFactor(0);
-        this.sky2.setOrigin(0,0);
-        this.sky2.setDepth(0);
-        //this.sky.tileScaleX=this.sky.tileScaleY=0.8;
-        
-        
-        //on ajoute une troisieme couche de ciel
+        //  1er plan
         this.sky4=this.add.tileSprite(
             0,
             0,
@@ -67,10 +49,9 @@ class TableauPara extends Tableau{
         );
         this.sky4.setScrollFactor(0);
         this.sky4.setOrigin(0,0);
-        this.sky4.setDepth(20);
-        
+        this.sky4.setDepth(6);
 
-        //on ajoute une troisieme couche de ciel
+        //2e plan
         this.sky3=this.add.tileSprite(
             0,
             100,
@@ -80,29 +61,55 @@ class TableauPara extends Tableau{
         );
         this.sky3.setScrollFactor(0);
         this.sky3.setOrigin(0,0);
-        this.sky3.setDepth(12);
-
+        this.sky3.setDepth(5);
         
+        //3e plan
+        this.sky2=this.add.tileSprite(
+            0,
+            0,
+            this.sys.canvas.width,
+            this.sys.canvas.height,
+            '2'
+        );
+        this.sky2.setScrollFactor(0);
+        this.sky2.setOrigin(0,0);
+        this.sky2.setDepth(1);
+
+        //4e plan
+        this.sky=this.add.tileSprite(
+            0,
+            0,
+            this.sys.canvas.width,
+            this.sys.canvas.height,
+            '3'
+        );
+        this.sky.setOrigin(0,0);
+        this.sky.setScrollFactor(0);
+        this.sky.setDepth(0);
+        
+
+
         
         this.stars=this.physics.add.group();
         this.platforms=this.physics.add.staticGroup();
-        this.platforms.create(20, 400, 'pf').setDisplaySize(80,20).refreshBody().setDepth(12);
-        for(let posX=220;posX<largeurDuTableau;posX+=200){
-            let etoileY=Math.random()*100 + 300;
-            let star=this.stars.create(posX ,etoileY,"star");
+        this.platforms.create(20, 400, 'pf').setDisplaySize(80,20).refreshBody().setDepth(2);
+
+        //Boucle de création du niveau
+        for(let posX=220;posX<tabL;posX+=200){
+            let diamsY=Math.random()*100 + 300;
+
+            let star=this.stars.create(posX ,diamsY,"star");                                                        //les diams
             star.body.allowGravity=false;
 
-            /* ANCIEN 
-            let plate=this.platforms.create(posX ,etoileY+50,"ground");
-            plate.setVisible(1);
-            plate.setDisplaySize(50,20);
-            plate.refreshBody();
-            */
-
-            new Algues(this, posX + 100, 560);
+            if(Math.random()>0.9){                                                                                           //diams sous les plateformes
+                let star=this.stars.create(posX, 480,"star");
+                star.body.allowGravity=0;
+                console.log("etoile ?");
+            }
             
+            new Piques(this, posX + 100, 570);                                                                      //les piques
 
-           this.platforms.create(posX, etoileY+50, 'pf').setDisplaySize(80,20).refreshBody().setDepth(12);
+            this.platforms.create(posX, diamsY+50, 'pf').setDisplaySize(80,20).refreshBody();                       //les plateformes
 
         }
 
@@ -114,16 +121,17 @@ class TableauPara extends Tableau{
         this.physics.add.overlap(this.player, this.stars, this.ramasserEtoile, null, this);
         this.physics.add.collider(this.player,this.platforms);
 
-        new Filet(this, 800, 340);
-        new Filet(this, 1800, 300);
+        new Boule(this, 800, 340);
+        new Boule(this, 1800, 300);
 
-        new Plastique(this, 600, 430);
-        new Plastique(this, 1200, 430);
+        new MonstreRoi(this, 600, 430);
+        new MonstreRoi(this, 1600, 430);
+        new MonstreRoi(this, 2700, 430);
 
-        //fait passer les éléments devant le ciel
-        this.platforms.setDepth(10);
-        this.stars.setDepth(10);
-        this.player.setDepth(10);
+        //remise a jour de la profondeur au cas ou
+        this.platforms.setDepth(2);
+        this.stars.setDepth(2);
+        this.player.setDepth(4);
 
     }
 

@@ -142,7 +142,6 @@ class Tableau extends Phaser.Scene{
                 ui.gagne();
                 player.directionY=500;
                 player.setVelocityY(-250);
-                console.log("test");
                 monster.isDead=true; //ok le monstre est mort
                 monster.visible=false;
                 this.saigne(monster,function(){
