@@ -33,9 +33,10 @@ class TableauPara extends Tableau{
         //setup TAB
         let tabL=4000;
         let tabH=600; //la hauteur est identique au cadre du jeu
+
+        
         this.cameras.main.setBounds(0, 0, tabL, tabH);
         this.physics.world.setBounds(0, 0, tabL,  tabH);
-
         this.cameras.main.startFollow(this.player, false, 0.05, 0.05);
 
         
