@@ -38,6 +38,12 @@ class TableauTiled extends Tableau{
         //les plateformes simples
         this.calquesTest = this.map.createLayer('calquesTest', this.tileset, 0, 0);
 
+
+        const spawnPoint = this.map.findObject("point", obj => obj.name === "Player");
+        this.player.x = spawnPoint.x;
+        this.player.y = spawnPoint.y;
+
+
         //on définit les collisions, plusieurs méthodes existent:
 
         //manière la plus simple (là où il y a des tiles ça collide et sinon non)
@@ -72,17 +78,6 @@ class TableauTiled extends Tableau{
         **/
 
 
-        //----------les monstres volants (objets) ---------------------
-
-        let monsters=[];
-        this.flyingMonstersObjects = this.map.getObjectLayer('flyingMonsters')['objects'];
-        // On crée des montres volants pour chaque objet rencontré
-        this.flyingMonstersObjects.forEach(monsterObject => {
-            let monster=new MonsterFly(this,monsterObject.x,monsterObject.y);
-            monsters.push(monster);
-        });
-
-
         //----------débug---------------------
 
         //pour débugger les collisions sur chaque layer
@@ -90,42 +85,9 @@ class TableauTiled extends Tableau{
         if(this.game.config.physics.arcade.debug === false){
             debug.visible=false;
         }
-        //débug calquesTest en vers
-        this.calquesTest.renderDebug(debug,{
-            tileColor: null, // Couleur des tiles qui ne collident pas
-            collidingTileColor: new Phaser.Display.Color(0, 255, 0, 255), //Couleur des tiles qui collident
-            faceColor: null // Color of colliding face edges
-        });
-        //debug lave en rouge
-        this.lave.renderDebug(debug,{
-            tileColor: null, // Couleur des tiles qui ne collident pas
-            collidingTileColor: new Phaser.Display.Color(255, 0, 0, 255), //Couleur des tiles qui collident
-            faceColor: null // Color of colliding face edges
-        });
+        
 
-
-        //---------- parallax ciel (rien de nouveau) -------------
-
-        //on change de ciel, on fait une tileSprite ce qui permet d'avoir une image qui se répète
-        this.sky=this.add.tileSprite(
-            0,
-            0,
-            this.sys.canvas.width,
-            this.sys.canvas.height,
-            'night'
-        );
-        this.sky2=this.add.tileSprite(
-            0,
-            0,
-            this.sys.canvas.width,
-            this.sys.canvas.height,
-            'night'
-        );
-        this.sky.setOrigin(0,0);
-        this.sky2.setOrigin(0,0);
-        this.sky.setScrollFactor(0);//fait en sorte que le ciel ne suive pas la caméra
-        this.sky2.setScrollFactor(0);//fait en sorte que le ciel ne suive pas la caméra
-        this.sky2.blendMode=Phaser.BlendModes.ADD;
+        
 
         //----------collisions---------------------
 
@@ -141,19 +103,9 @@ class TableauTiled extends Tableau{
 
         //on définit les z à la fin
         this.sky.setDepth(5);
-        this.sky2.setDepth(6);
         this.calquesTest.setDepth(10);
-        this.lave.setDepth(11);
-        this.derriere.setDepth(19);
         this.player.setDepth(20)
-        this.devant.setDepth(21);
         this.stars.setDepth(22);
-        //pour tous les monstres...
-        for(let m of monsters){
-            m.setDepth(30);
-        }
-
-        debug.setDepth(1000);
     }
 
 
@@ -162,8 +114,6 @@ class TableauTiled extends Tableau{
         //le ciel se déplace moins vite que la caméra pour donner un effet paralax
         this.sky.tilePositionX=this.cameras.main.scrollX*0.6;
         this.sky.tilePositionY=this.cameras.main.scrollY*0.6;
-        this.sky2.tilePositionX=this.cameras.main.scrollX*0.7+100;
-        this.sky2.tilePositionY=this.cameras.main.scrollY*0.7+100;
     }
 
 
