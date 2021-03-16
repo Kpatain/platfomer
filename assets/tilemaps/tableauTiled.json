@@ -51,7 +51,7 @@
  "nextobjectid":2,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.4.2",
+ "tiledversion":"1.4.3",
  "tileheight":32,
  "tilesets":[
         {
@@ -61,7 +61,7 @@
          "imageheight":224,
          "imagewidth":448,
          "margin":0,
-         "name":"tableauTiledTileset.png",
+         "name":"tableauTiledTileset",
          "spacing":0,
          "tilecount":98,
          "tileheight":32,
