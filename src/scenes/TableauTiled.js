@@ -23,6 +23,7 @@ class TableauTiled extends Tableau{
     }
     create() {
         super.create();
+
         //notre map
         this.map = this.make.tilemap({ key: 'map' });
         //nos images qui vont avec la map

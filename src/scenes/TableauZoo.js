@@ -1,5 +1,12 @@
 class TableauZoo extends Tableau{
 
+    constructor(key, hauteur, largeur) {
+        super(key);
+        this.hauteur = hauteur;
+        this.largeur = largeur;
+
+    }
+
     preload() {
         super.preload();
         this.load.image('star', 'assets/star.png');
@@ -27,6 +34,8 @@ class TableauZoo extends Tableau{
             child.setMaxVelocity(0,500);
         });
         this.physics.add.overlap(this.player, this.stars, this.ramasserEtoile, null, this);
+
+        alert(this.hauteur);
 
         //notre monstre
 

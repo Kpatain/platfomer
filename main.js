@@ -18,7 +18,9 @@ let config = {
 
         new TableauTiled("Tiled test"),
         new TableauPara("Robotic Castle"),
-        new TableauZoo("Le Zoo"),
+
+        new TableauZoo("Le Zoo", 500, 500),
+
         new Tableau00("Des étoiles"),
         new Tableau01("Des plateformes"),
         new Tableau02("Plein d'étoiles"),
