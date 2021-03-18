@@ -17,10 +17,9 @@ class TableauTiled extends Tableau{
         this.load.tilemapTiledJSON('map', 'assets/tilemaps/tableauTiled.json');
 
         // -----et puis aussi-------------
-        this.load.image('star', 'assets/star.png');
-        this.load.image('monster-fly', 'assets/monster-fly.png');
-        this.load.image('night', 'assets/night.jpg');
+        this.load.image('star', 'assets/jade.png');
     }
+
     create() {
         super.create();
 
