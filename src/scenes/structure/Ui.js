@@ -65,9 +65,9 @@ class Ui extends Phaser.Scene{
 
 
 
-        let pad=new GamePad(this,0,0);
-        pad.x=this.sys.canvas.width-pad.size-32;
-        pad.y=this.sys.canvas.height-pad.size-32;
+        this.pad=new GamePad(this,0,0);
+        this.pad.x=this.sys.canvas.width-this.pad.size-32;
+        this.pad.y=this.sys.canvas.height-this.pad.size-32;
 
 
 
@@ -94,10 +94,18 @@ class Ui extends Phaser.Scene{
         this.score+=points;
         this._scoreText.setText('Score: ' + this.score);
     }
+
     update(){
         if(Tableau.current){
             this._tableauText.setText(Tableau.current.scene.key);
-            this._tableauTextClass.setText(Tableau.current.constructor.name);
+            this._tableauTextClass.setText(Tableau.current.constructor.name)
         }
+
+
+        console.log( this.pad.x);
+        console.log( this.pad.y);
+
+
+
     }
 }

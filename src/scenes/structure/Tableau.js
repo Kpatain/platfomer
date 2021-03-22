@@ -35,11 +35,12 @@ class Tableau extends Phaser.Scene{
         this.sky=this.add.image(0, 0, 'sky').setOrigin(0,0);
         this.sky.displayWidth=14*64;
         this.sky.setScrollFactor(0,0);
+
         /**
-         * Le joueur
-         * @type {Player}
+         *
+         * @type {Player2}
          */
-        this.player=new Player(this,0,0);
+        this.player=new Player2(this,0,0);
 
         this.player.setMaxVelocity(800,800);
         this.blood=this.add.sprite(this.sys.canvas.width/2,this.sys.canvas.height/2,"blood")
@@ -50,7 +51,7 @@ class Tableau extends Phaser.Scene{
     }
     update(){
         super.update();
-        this.player.move();
+        //this.player.move();
     }
 
     /**

@@ -15,9 +15,9 @@ let config = {
     },
     scene: [
         new Ui(),
-
-        new TableauPara("Robotic Castle"),
+        
         new TableauTiled("Tiled test"),
+        new TableauPara("Robotic Castle"),
 
         new TableauZoo("Le Zoo", 500, 500),
 
