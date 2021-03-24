@@ -245,6 +245,10 @@ class Tableau extends Phaser.Scene{
         game.scene.start(tableau);
     }
 
+    update(){
+        this.player.move();
+    }
+
 
 }
 

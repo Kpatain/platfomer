@@ -12,15 +12,15 @@ class GamePad extends Phaser.GameObjects.Container{
         let pad2=scene.add.container();
 
         let circle=scene.add.circle(0,0,this.size/2,0xffffff,0.1)
-        let circleDrag=scene.add.circle(0,0,dragW/2,0xffffff,0.3)
+        this.circleDrag=scene.add.circle(0,0,dragW/2,0xffffff,0.3)
         this.add(pad2);
         pad2.add(circle);
-        pad2.add(circleDrag);
+        pad2.add(this.circleDrag);
         pad2.x=w/2;
         pad2.y=w/2;
 
-        circleDrag.setInteractive();
-        scene.input.setDraggable(circleDrag, true);
+        this.circleDrag.setInteractive();
+        scene.input.setDraggable(this.circleDrag, true);
 
         this.cursors = scene.input.keyboard.createCursorKeys();
 
@@ -63,11 +63,11 @@ class GamePad extends Phaser.GameObjects.Container{
             }
         });
 
-        circleDrag.on('drag', (pointer, dragX, dragY) => {
-            circleDrag.x = dragX
-            circleDrag.y = dragY
-            circleDrag.x=Phaser.Math.Clamp(dragX,-w/2,w/2);
-            circleDrag.y=Phaser.Math.Clamp(dragY,-w/2,w/2);
+        this.circleDrag.on('drag', (pointer, dragX, dragY) => {
+            this.circleDrag.x = dragX
+            this.circleDrag.y = dragY
+            this.circleDrag.x=Phaser.Math.Clamp(dragX,-w/2,w/2);
+            this.circleDrag.y=Phaser.Math.Clamp(dragY,-w/2,w/2);
             if(dragX < -w / 4){
                 Tableau.current.player.directionX=-1;
             }else if(dragX > w / 4){
@@ -84,14 +84,15 @@ class GamePad extends Phaser.GameObjects.Container{
             }
 
         });
-        circleDrag.on('dragend', (pointer, dragX, dragY) => {
-            circleDrag.x = 0;
-            circleDrag.y = 0;
+        this.circleDrag.on('dragend', (pointer, dragX, dragY) => {
+            this.circleDrag.x = 0;
+            this.circleDrag.y = 0;
             Tableau.current.player.directionX=0;
             Tableau.current.player.directionY=0;
         });
 
     }
+
 
 
 }

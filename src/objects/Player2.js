@@ -13,6 +13,13 @@ class Player2 extends Phaser.Physics.Arcade.Sprite{
         this.setOffset(3, 10);
         this.setSize(32, 32);
 
+        this.forceX = 0;
+        this.forceY = 0;
+        this.oldforceX = 1;
+        this.oldforceY = 1;
+        this.randomBool = 0;
+
+
 
         this._directionX=0;
         this._directionY=0;
@@ -27,6 +34,45 @@ class Player2 extends Phaser.Physics.Arcade.Sprite{
         this._directionY=value;
     }
 
+
+
+    move()
+    {
+        this.forceX = ui.pad.circleDrag.x;
+        this.forceY = ui.pad.circleDrag.y;
+
+        if(ui.pad.circleDrag.x + ui.pad.circleDrag.y !== 0)
+        {
+            this.oldforceX = this.forceX;
+            this.oldforceY = this.forceY;
+            this.randomBool = 1;
+
+            console.log("grabbed");
+        }
+
+        else
+        {
+            console.log("a zero");
+            if(Math.abs(this.forceX - this.oldforceX) == Math.abs(this.oldforceX)
+                && Math.abs(this.forceY - this.oldforceY) == Math.abs(this.oldforceY)
+                && this.randomBool == 1)
+            {
+                console.log("released");
+                //console.log(this.oldforceX, this.oldforceY);
+                this.randomBool = 0;
+                //console.log("X :", ui.pad.circleDrag.x, "Y :", ui.pad.circleDrag.y);
+
+                this.setVelocityX(-this.oldforceX * 5);
+                this.setVelocityY(-this.oldforceY * 7);
+            }
+
+        }
+
+
+
+    }
+
+
     /**
      * arrête le joueur
      */
@@ -37,9 +83,5 @@ class Player2 extends Phaser.Physics.Arcade.Sprite{
         this.directionX=0;
     }
 
-    update(){
-        UI
-
-    }
 
 }

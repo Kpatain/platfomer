@@ -102,10 +102,6 @@ class Ui extends Phaser.Scene{
         }
 
 
-        console.log( this.pad.x);
-        console.log( this.pad.y);
-
-
 
     }
 }
