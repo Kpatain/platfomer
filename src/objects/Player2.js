@@ -35,9 +35,16 @@ class Player2 extends Phaser.Physics.Arcade.Sprite{
     }
 
 
-
+    /**
+     * NOUVELLE METHODE SLINGSHOT
+     */
     move()
     {
+        if (this.directionY==0){
+
+            this.setVelocity(0,0);
+        }
+
         this.forceX = ui.pad.circleDrag.x;
         this.forceY = ui.pad.circleDrag.y;
 
@@ -47,26 +54,29 @@ class Player2 extends Phaser.Physics.Arcade.Sprite{
             this.oldforceY = this.forceY;
             this.randomBool = 1;
 
-            console.log("grabbed");
+            //console.log("grabbed");
         }
 
         else
         {
-            console.log("a zero");
+            //console.log("a zero");
             if(Math.abs(this.forceX - this.oldforceX) == Math.abs(this.oldforceX)
                 && Math.abs(this.forceY - this.oldforceY) == Math.abs(this.oldforceY)
                 && this.randomBool == 1)
             {
-                console.log("released");
+                //console.log("released");
                 //console.log(this.oldforceX, this.oldforceY);
                 this.randomBool = 0;
                 //console.log("X :", ui.pad.circleDrag.x, "Y :", ui.pad.circleDrag.y);
 
-                this.setVelocityX(-this.oldforceX * 5);
-                this.setVelocityY(-this.oldforceY * 7);
+                this.setVelocityX(-this.oldforceX * 9);
+                this.setVelocityY(-this.oldforceY * 15);
             }
 
         }
+
+        console.log(this._directionX);
+
 
 
 
