@@ -51,7 +51,7 @@ class Tableau extends Phaser.Scene{
     }
     update(){
         super.update();
-        //this.player.move();
+        this.player.move();
     }
 
     /**
@@ -245,9 +245,6 @@ class Tableau extends Phaser.Scene{
         game.scene.start(tableau);
     }
 
-    update(){
-        this.player.move();
-    }
 
 
 }

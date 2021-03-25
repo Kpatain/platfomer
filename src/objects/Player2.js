@@ -18,6 +18,9 @@ class Player2 extends Phaser.Physics.Arcade.Sprite{
         this.oldforceX = 1;
         this.oldforceY = 1;
         this.randomBool = 0;
+        this.randomBool2 = 0;
+        this.oldX = 0;
+        this.oldY = 1;
 
 
 
@@ -35,50 +38,61 @@ class Player2 extends Phaser.Physics.Arcade.Sprite{
     }
 
 
+
+
     /**
      * NOUVELLE METHODE SLINGSHOT
      */
     move()
     {
-        if (this.directionY==0){
+        /**
+        this.oldPos();
 
-            this.setVelocity(0,0);
+        if (this.oldY - this.y == 0){
+
+            this.x = this.oldX;
         }
+         */
 
         this.forceX = ui.pad.circleDrag.x;
         this.forceY = ui.pad.circleDrag.y;
 
-        if(ui.pad.circleDrag.x + ui.pad.circleDrag.y !== 0)
+        if(ui.pad.circleDrag.x + ui.pad.circleDrag.y !== 0 && this.body.deltaY() > 0 && this.body.onFloor())
         {
             this.oldforceX = this.forceX;
             this.oldforceY = this.forceY;
             this.randomBool = 1;
 
-            //console.log("grabbed");
         }
 
         else
         {
-            //console.log("a zero");
+
             if(Math.abs(this.forceX - this.oldforceX) == Math.abs(this.oldforceX)
                 && Math.abs(this.forceY - this.oldforceY) == Math.abs(this.oldforceY)
-                && this.randomBool == 1)
+                && this.randomBool == 1 && this.body.deltaY() > 0 && this.body.onFloor())
             {
-                //console.log("released");
-                //console.log(this.oldforceX, this.oldforceY);
                 this.randomBool = 0;
-                //console.log("X :", ui.pad.circleDrag.x, "Y :", ui.pad.circleDrag.y);
-
                 this.setVelocityX(-this.oldforceX * 9);
                 this.setVelocityY(-this.oldforceY * 15);
             }
 
         }
 
-        console.log(this._directionX);
+
+        if (this.forceY==0){
+            this.forceX = 0;
+        }
+
+        /**
+        if(this.body.deltaY() > 0 && this.body.onFloor())
+        {
+            console.log(this.body.deltaY());
+            this.setVelocityX(0);
 
 
-
+        }
+        */
 
     }
 
@@ -93,5 +107,15 @@ class Player2 extends Phaser.Physics.Arcade.Sprite{
         this.directionX=0;
     }
 
+
+    oldPos(){
+        if(this.randomBool2%2 == 1) {
+            this.oldX = this.x;
+            this.oldY = this.y;
+        }
+
+        this.randomBool2 = Math.abs(this.randomBool2 - 5);
+        console.log("oldPos");
+    }
 
 }

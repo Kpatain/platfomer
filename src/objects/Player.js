@@ -85,9 +85,5 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
     }
 
-    update(){
-        console.log(ui.pad.circleDrag.x);
-    }
-
 
 }
