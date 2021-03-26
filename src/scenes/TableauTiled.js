@@ -18,6 +18,10 @@ class TableauTiled extends Tableau{
 
         // -----et puis aussi-------------
         this.load.image('star', 'assets/jade.png');
+
+
+        this.load.image('plastique', 'assets/plastique.png');
+
     }
 
     create() {
