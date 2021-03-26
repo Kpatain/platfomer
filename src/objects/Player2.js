@@ -27,6 +27,18 @@ class Player2 extends Phaser.Physics.Arcade.Sprite{
         this._directionX=0;
         this._directionY=0;
 
+        this.anims.create({
+            key: 'right',
+            frames: [ { key: 'player', frame: 0 } ],
+            frameRate: 20
+        });
+
+        this.anims.create({
+            key: 'left',
+            frames: [ { key: 'player', frame: 7 } ],
+            frameRate: 20
+        });
+
         console.log("Player2");
     }
 
@@ -36,7 +48,6 @@ class Player2 extends Phaser.Physics.Arcade.Sprite{
     set directionY(value){
         this._directionY=value;
     }
-
 
 
 
@@ -62,6 +73,16 @@ class Player2 extends Phaser.Physics.Arcade.Sprite{
             this.oldforceX = this.forceX;
             this.oldforceY = this.forceY;
             this.randomBool = 1;
+
+
+            if (this.oldforceX > 0){
+                console.log("droite");
+                this.anims.keyframe = "right";
+            }
+            else{
+                console.log("gauche");
+                this.anims.keyframe = "left";
+            }
 
         }
 
