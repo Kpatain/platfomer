@@ -172,7 +172,7 @@
   </data>
  </layer>
  <objectgroup id="2" name="point">
-  <object id="1" name="Player" x="414.214" y="115.67">
+  <object id="1" name="Player" x="456.638" y="1512.64">
    <point/>
   </object>
  </objectgroup>
