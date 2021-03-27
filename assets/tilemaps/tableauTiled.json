@@ -38,8 +38,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":456.638242424242,
-                 "y":1512.6396969697
+                 "x":458.42212132025,
+                 "y":790.07086529884
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -51,7 +51,7 @@
  "nextobjectid":22,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.4.2",
+ "tiledversion":"1.4.3",
  "tileheight":32,
  "tilesets":[
         {

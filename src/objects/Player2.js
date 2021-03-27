@@ -22,6 +22,8 @@ class Player2 extends Phaser.Physics.Arcade.Sprite{
         this.oldX = 0;
         this.oldY = 1;
 
+        this.angle=0;
+
 
 
         this._directionX=0;
@@ -42,16 +44,16 @@ class Player2 extends Phaser.Physics.Arcade.Sprite{
         //PARTICLES
         scene.starsFxContainer = scene.add.container();
         scene.starsFxContainer.x = 0;
-        scene.starsFxContainer.y = -12;
+        scene.starsFxContainer.y = 0;
 
         this.particles = scene.add.particles('plastique');
         this.emmiter = this.particles.createEmitter({
             frequency: 100,
             //delay: 200,
-            lifespan: 1000,
-            quantity: 5,
+            lifespan: 2000,
+            quantity: 1,
             gravityX: 0,
-            gravityY: -100,
+            gravityY: 100,
             x: { min: -32, max: 32 },
             y: { min: -32, max: 32 },
             tint: [  0xB85901, 0x753901, 0xF57802, 0x361A01, 0xDB6B02 ],
@@ -60,13 +62,13 @@ class Player2 extends Phaser.Physics.Arcade.Sprite{
             scale: { start: 0.1, end: 0.1 },
             alpha: { start: 1, end: 0 },
             blendMode: Phaser.BlendModes.ADD,
-            speed: 20
+            speed: 100,
+            angle: this.angle,
         });
 
         this.emmiter.startFollow(this);
         scene.starsFxContainer.add(this.particles);
 
-        this.particles.setDepth(12);
 
         console.log("Player2");
     }
@@ -99,6 +101,9 @@ class Player2 extends Phaser.Physics.Arcade.Sprite{
 
         if(ui.pad.circleDrag.x + ui.pad.circleDrag.y !== 0 && this.body.deltaY() > 0 && this.body.onFloor())
         {
+            this.particles.visible = 1;
+            this.emmiter.update;
+
             this.oldforceX = this.forceX;
             this.oldforceY = this.forceY;
             this.randomBool = 1;
@@ -117,6 +122,7 @@ class Player2 extends Phaser.Physics.Arcade.Sprite{
 
         else
         {
+            this.particles.visible = 0;
 
             if(Math.abs(this.forceX - this.oldforceX) == Math.abs(this.oldforceX)
                 && Math.abs(this.forceY - this.oldforceY) == Math.abs(this.oldforceY)
@@ -144,6 +150,8 @@ class Player2 extends Phaser.Physics.Arcade.Sprite{
         }
         */
 
+        this.angle=180/Math.PI * Phaser.Math.Angle.Between(ui.pad.circleDrag.x,ui.pad.circleDrag.y,1,1);
+        console.log(this.angle);
     }
 
 
@@ -165,7 +173,7 @@ class Player2 extends Phaser.Physics.Arcade.Sprite{
         }
 
         this.randomBool2 = Math.abs(this.randomBool2 - 5);
-        console.log("oldPos");
+
     }
 
 }

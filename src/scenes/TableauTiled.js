@@ -1,13 +1,5 @@
 class TableauTiled extends Tableau{
-    /**
-     * Ce tableau démontre comment se servir de Tiled, un petit logiciel qui permet de designer des levels et de les importer dans Phaser (entre autre).
-     *
-     * Ce qui suit est très fortement inspiré de ce tuto :
-     * https://stackabuse.com/phaser-3-and-tiled-building-a-platformer/
-     *
-     * Je vous conseille aussi ce tuto qui propose quelques alternatives (la manière dont son découpées certaines maisons notamment) :
-     * https://medium.com/@michaelwesthadley/modular-game-worlds-in-phaser-3-tilemaps-1-958fc7e6bbd6
-     */
+
     preload() {
         super.preload();
         // ------pour TILED-------------
@@ -108,8 +100,12 @@ class TableauTiled extends Tableau{
         //on définit les z à la fin
         this.sky.setDepth(5);
         this.calquesTest.setDepth(10);
+        this.player.scene.starsFxContainer.setDepth(19);
         this.player.setDepth(20)
         this.stars.setDepth(22);
+
+
+
     }
 
 
