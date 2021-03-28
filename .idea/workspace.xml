@@ -6,7 +6,6 @@
       <change beforePath="$PROJECT_DIR$/assets/tilemaps/tableauTiled.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/tilemaps/tableauTiled.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/tilemaps/tableauTiled.tmx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/tilemaps/tableauTiled.tmx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/objects/Player2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/Player2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/TableauTiled.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/TableauTiled.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +63,8 @@
       <workItem from="1616685610625" duration="6892000" />
       <workItem from="1616749515052" duration="2934000" />
       <workItem from="1616769588659" duration="947000" />
-      <workItem from="1616873274809" duration="6962000" />
+      <workItem from="1616873274809" duration="7557000" />
+      <workItem from="1616919059986" duration="3972000" />
     </task>
     <servers />
   </component>
