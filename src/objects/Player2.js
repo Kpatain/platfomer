@@ -9,16 +9,20 @@ class Player2 extends Phaser.Physics.Arcade.Sprite{
         this.setGravityY(700)
         this.setFriction(1,1);
 
+
+
         this.setBodySize(this.body.width-6,this.body.height-10);
-        this.setOffset(3, 10);
-        this.setSize(32, 32);
+
+        //this.setSize(32, 32);
+        this.body.setCircle(15,15);
+        this.setOffset(-this.body.radius/2 + 10, -this.body.radius/2 + 10);
 
         this.forceX = 0;
         this.forceY = 0;
         this.oldforceX = 1;
         this.oldforceY = 1;
-        this.randomBool = 0;
-        this.randomBool2 = 0;
+        this.randomCond = 0;
+        this.randomCond2 = 0;
         this.oldX = 0;
         this.oldY = 1;
 
@@ -102,14 +106,19 @@ class Player2 extends Phaser.Physics.Arcade.Sprite{
         this.forceX = ui.pad.circleDrag.x;
         this.forceY = ui.pad.circleDrag.y;
 
+        //si le pad bouge et le joueur est par terre
         if(ui.pad.circleDrag.x + ui.pad.circleDrag.y !== 0 && this.body.deltaY() > 0 && this.body.onFloor())
         {
-            //this.emmiter.removeChild(this.particles);
-            this.particles.visible = 1;
+            console.log("le pad bouge")
+            //this.particles.;
+            if (Math.sqrt(Math.pow(ui.pad.circleDrag.x,2) + Math.pow(ui.pad.circleDrag.y,2)) > 10)
+            {
+                this.particles.visible = 1;
+            }
 
             this.oldforceX = this.forceX;
             this.oldforceY = this.forceY;
-            this.randomBool = 1;
+            this.randomCond = 1;
 
 
             if (this.oldforceX > 0){
@@ -122,28 +131,29 @@ class Player2 extends Phaser.Physics.Arcade.Sprite{
             }
 
         }
-
         else
         {
             this.particles.visible = 0;
 
             if(Math.abs(this.forceX - this.oldforceX) == Math.abs(this.oldforceX)
                 && Math.abs(this.forceY - this.oldforceY) == Math.abs(this.oldforceY)
-                && this.randomBool == 1 && this.body.deltaY() > 0 && this.body.onFloor())
+                && this.randomCond == 1 && this.body.deltaY() > 0 && this.body.onFloor())
             {
-                this.randomBool = 0;
+                console.log("je viens de lacher")
+                this.randomCond = 0;
                 this.setVelocityX(-this.oldforceX * 8.4);
                 this.setVelocityY(-this.oldforceY * 15);
             }
 
         }
 
-
+        /**
         if (this.forceY==0){
+            console.log("rmet force X à 0")
             this.forceX = 0;
         }
 
-        /**
+
         if(this.body.deltaY() > 0 && this.body.onFloor())
         {
             console.log(this.body.deltaY());
@@ -151,7 +161,8 @@ class Player2 extends Phaser.Physics.Arcade.Sprite{
 
 
         }
-        */
+         */
+
 
         //this.emitter.setRotation(180 - 180/Math.PI * Phaser.Math.Angle.Between(ui.pad.circleDrag.x,ui.pad.circleDrag.y,1,1));
         //this.forcePrtc = 1.9 * Math.sqrt(Math.pow(ui.pad.circleDrag.x,2) + Math.pow(ui.pad.circleDrag.y,2));
@@ -159,6 +170,7 @@ class Player2 extends Phaser.Physics.Arcade.Sprite{
         this.emmiter.speedY.propertyValue = ui.pad.circleDrag.y*-4.5 ;
 
         //Phaser.Physics.Arcade.collider(this.emitter);
+
 
     }
 
@@ -175,12 +187,12 @@ class Player2 extends Phaser.Physics.Arcade.Sprite{
 
 
     oldPos(){
-        if(this.randomBool2%2 == 1) {
+        if(this.randomCond2%2 == 1) {
             this.oldX = this.x;
             this.oldY = this.y;
         }
 
-        this.randomBool2 = Math.abs(this.randomBool2 - 5);
+        this.randomCond2 = Math.abs(this.randomCond2 - 5);
 
     }
 
