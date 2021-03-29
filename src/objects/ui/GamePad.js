@@ -66,7 +66,7 @@ class GamePad extends Phaser.GameObjects.Container{
         this.circleDrag.on('drag', (pointer, dragX, dragY) => {
             this.circleDrag.x = dragX
             this.circleDrag.y = dragY
-            this.circleDrag.x=Phaser.Math.Clamp(dragX,-w/2,w/2);
+            this.circleDrag.x=Phaser.Math.Clamp(dragX,-w/2 ,w/2);
             this.circleDrag.y=Phaser.Math.Clamp(dragY,-w/2,w/2);
             if(dragX < -w / 4){
                 Tableau.current.player.directionX=-1;

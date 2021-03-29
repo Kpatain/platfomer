@@ -118,7 +118,7 @@ class TableauTiled extends Tableau{
 
         //Phaser.Physics.Arcade.Collider(this.player.emmiter);
         //this.player.particles.setCollideWorldBounds(true);
-        //console.log(Phaser);
+        console.log(Phaser);
 
     }
 

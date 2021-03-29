@@ -70,7 +70,6 @@ class Player2 extends Phaser.Physics.Arcade.Sprite{
         });
 
         this.emmiter.startFollow(this);
-        this.emmiter.setCollider(true);
         scene.starsFxContainer.add(this.particles);
 
 
@@ -105,7 +104,7 @@ class Player2 extends Phaser.Physics.Arcade.Sprite{
 
         if(ui.pad.circleDrag.x + ui.pad.circleDrag.y !== 0 && this.body.deltaY() > 0 && this.body.onFloor())
         {
-            this.particles.clearMask();
+            //this.emmiter.removeChild(this.particles);
             this.particles.visible = 1;
 
             this.oldforceX = this.forceX;
@@ -133,7 +132,7 @@ class Player2 extends Phaser.Physics.Arcade.Sprite{
                 && this.randomBool == 1 && this.body.deltaY() > 0 && this.body.onFloor())
             {
                 this.randomBool = 0;
-                this.setVelocityX(-this.oldforceX * 9);
+                this.setVelocityX(-this.oldforceX * 8.4);
                 this.setVelocityY(-this.oldforceY * 15);
             }
 
@@ -158,6 +157,8 @@ class Player2 extends Phaser.Physics.Arcade.Sprite{
         //this.forcePrtc = 1.9 * Math.sqrt(Math.pow(ui.pad.circleDrag.x,2) + Math.pow(ui.pad.circleDrag.y,2));
         this.emmiter.speedX.propertyValue = ui.pad.circleDrag.x*-3.5 ;
         this.emmiter.speedY.propertyValue = ui.pad.circleDrag.y*-4.5 ;
+
+        //Phaser.Physics.Arcade.collider(this.emitter);
 
     }
 
