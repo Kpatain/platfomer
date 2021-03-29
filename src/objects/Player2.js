@@ -75,6 +75,7 @@ class Player2 extends Phaser.Physics.Arcade.Sprite{
 
         this.emmiter.startFollow(this);
         scene.starsFxContainer.add(this.particles);
+        this.scene.starsFxContainer.setDepth(19);
 
 
         console.log("Player2");

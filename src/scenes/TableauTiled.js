@@ -101,7 +101,7 @@ class TableauTiled extends Tableau{
         //on définit les z à la fin
         this.sky.setDepth(5);
         this.calquesTest.setDepth(10);
-        this.player.scene.starsFxContainer.setDepth(19);
+        //this.player.scene.starsFxContainer.setDepth(19);
         this.player.setDepth(20)
         this.stars.setDepth(22);
 
