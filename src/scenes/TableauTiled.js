@@ -12,7 +12,7 @@ class TableauTiled extends Tableau{
         this.load.image('star', 'assets/jade.png');
 
 
-        this.load.image('plastique', 'assets/plastique.png');
+        this.load.image('traj', 'assets/traj.png');
 
     }
 
@@ -50,6 +50,7 @@ class TableauTiled extends Tableau{
         //permet de travailler sur un seul layer dans tiled et des définir les collisions en fonction des graphiques
         //exemple ici https://medium.com/@michaelwesthadley/modular-game-worlds-in-phaser-3-tilemaps-1-958fc7e6bbd6
         this.calquesTest.setCollisionByProperty({ collides: true });
+
 
 
         //Permet d'utiliser l'éditeur de collision de Tiled...mais ne semble pas marcher pas avec le moteur de physique ARCADE, donc oubliez cette option :(
@@ -114,6 +115,10 @@ class TableauTiled extends Tableau{
         //le ciel se déplace moins vite que la caméra pour donner un effet paralax
         this.sky.tilePositionX=this.cameras.main.scrollX*0.6;
         this.sky.tilePositionY=this.cameras.main.scrollY*0.6;
+
+        //Phaser.Physics.Arcade.Collider(this.player.emmiter);
+        //this.player.particles.setCollideWorldBounds(true);
+        //console.log(Phaser);
 
     }
 

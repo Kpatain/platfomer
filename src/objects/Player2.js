@@ -4,7 +4,7 @@ class Player2 extends Phaser.Physics.Arcade.Sprite{
         scene.add.existing(this)
         scene.physics.add.existing(this)
 
-        this.setCollideWorldBounds(true)
+        this.setCollideWorldBounds(true);
         this.setBounce(0.3);
         this.setGravityY(700)
         this.setFriction(1,1);
@@ -47,9 +47,10 @@ class Player2 extends Phaser.Physics.Arcade.Sprite{
         scene.starsFxContainer.x = 0;
         scene.starsFxContainer.y = 0;
 
-        this.particles = scene.add.particles('plastique');
+        this.particles = scene.add.particles('traj');
+
         this.emmiter = this.particles.createEmitter({
-            frequency: 20,
+            frequency: 200,
             //delay: 200,
             lifespan: 2000,
             quantity: 1,
@@ -62,13 +63,14 @@ class Player2 extends Phaser.Physics.Arcade.Sprite{
             radial: true,
             scale: { start: 0.1, end: 0.1 },
             alpha: { start: 1, end: 0 },
-            blendMode: Phaser.BlendModes.ADD,
+            //blendMode: Phaser.BlendModes.,
             speedX : 5,
             speedY : 4,
-            angle: this.anglePrtc,
+            angle: 0,
         });
 
         this.emmiter.startFollow(this);
+        this.emmiter.setCollider(true);
         scene.starsFxContainer.add(this.particles);
 
 
@@ -103,6 +105,7 @@ class Player2 extends Phaser.Physics.Arcade.Sprite{
 
         if(ui.pad.circleDrag.x + ui.pad.circleDrag.y !== 0 && this.body.deltaY() > 0 && this.body.onFloor())
         {
+            this.particles.clearMask();
             this.particles.visible = 1;
 
             this.oldforceX = this.forceX;
@@ -153,9 +156,9 @@ class Player2 extends Phaser.Physics.Arcade.Sprite{
 
         //this.emitter.setRotation(180 - 180/Math.PI * Phaser.Math.Angle.Between(ui.pad.circleDrag.x,ui.pad.circleDrag.y,1,1));
         //this.forcePrtc = 1.9 * Math.sqrt(Math.pow(ui.pad.circleDrag.x,2) + Math.pow(ui.pad.circleDrag.y,2));
-        this.emmiter.speedX.propertyValue = ui.pad.circleDrag.x*2 ;
-        this.emmiter.speedY.propertyValue = ui.pad.circleDrag.y*2 ;
-        console.log(this.emmiter.speedX, this.emmiter.speedY);
+        this.emmiter.speedX.propertyValue = ui.pad.circleDrag.x*-3.5 ;
+        this.emmiter.speedY.propertyValue = ui.pad.circleDrag.y*-4.5 ;
+
     }
 
 
