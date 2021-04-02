@@ -27,7 +27,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/vendor/phaser-3.50.0/src/scene/Scene.js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TiledPlatformer" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -63,7 +63,7 @@
       <workItem from="1617006760116" duration="5101000" />
       <workItem from="1617015956254" duration="3605000" />
       <workItem from="1617260338915" duration="599000" />
-      <workItem from="1617349309422" duration="491000" />
+      <workItem from="1617349309422" duration="813000" />
     </task>
     <servers />
   </component>
