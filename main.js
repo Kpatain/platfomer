@@ -16,7 +16,6 @@ let config = {
     scene: [
         new Ui(),
         
-
         new TableauPara("Robotic Castle"),
         new TableauTiled("Tiled test"),
 
@@ -55,6 +54,8 @@ let config = {
     autoRound: false
 };
 let game;
+//TABLEAU PLAYER SELEC
+let tab = 0;
 function resize() {
     /*
     var canvas = document.querySelector("canvas");
