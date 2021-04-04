@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6d35c8b4-dac2-4667-95ca-74b34e070c08" name="Default Changelist" comment="" />
+    <list default="true" id="6d35c8b4-dac2-4667-95ca-74b34e070c08" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -64,10 +66,17 @@
       <workItem from="1617015956254" duration="3605000" />
       <workItem from="1617260338915" duration="599000" />
       <workItem from="1617349309422" duration="813000" />
+      <workItem from="1617465505988" duration="519000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="709" y="295" key="FileChooserDialogImpl" timestamp="1617466024671">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state x="709" y="295" key="FileChooserDialogImpl/-1920.0.1858.1080/1920.184.1920.1040/0.0.1858.1080@0.0.1858.1080" timestamp="1617466024671" />
   </component>
 </project>
